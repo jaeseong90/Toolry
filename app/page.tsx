@@ -21,7 +21,7 @@ export default function Home() {
           개발자를 위한 <span className="text-accent">무료 도구 모음</span>
         </h1>
         <p className="mt-4 text-muted text-lg max-w-xl mx-auto">
-          광고 없이 빠르게 사용하는 온라인 유틸리티. 모든 처리는 브라우저에서 이루어집니다.
+          빠르게 사용하는 온라인 유틸리티. 모든 처리는 브라우저에서 이루어집니다.
         </p>
         <p className="mt-2 text-sm text-faint">
           현재 <span className="text-accent font-medium">{tools.length}개</span>의 도구 제공

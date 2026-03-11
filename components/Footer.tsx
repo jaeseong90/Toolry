@@ -11,7 +11,7 @@ export default function Footer() {
               Toolry
             </Link>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              개발자를 위한 광고 없는 무료 온라인 유틸리티.
+              개발자를 위한 무료 온라인 유틸리티.
               <br />
               모든 데이터는 브라우저에서 처리됩니다.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               <li className="text-sm text-faint">오픈소스 프로젝트</li>
               <li className="text-sm text-faint">서버 전송 없음</li>
-              <li className="text-sm text-faint">완전 무료, 광고 없음</li>
+              <li className="text-sm text-faint">완전 무료</li>
               <li>
                 <a
                   href="https://github.com/jaeseong90/Toolry"

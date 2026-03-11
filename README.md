@@ -3,7 +3,7 @@
 [![Site](https://img.shields.io/badge/사이트-GitHub%20Pages-10b981?style=flat-square)](https://jaeseong90.github.io/Toolry)
 [![GitHub](https://img.shields.io/github/stars/jaeseong90/Toolry?style=flat-square)](https://github.com/jaeseong90/Toolry)
 
-개발자와 사무직 직장인을 위한 **광고 없는 무료 온라인 유틸리티 툴 모음** 웹사이트입니다.
+개발자와 사무직 직장인을 위한 **무료 온라인 유틸리티 툴 모음** 웹사이트입니다.
 
 > 모든 데이터 처리는 브라우저에서 이루어지며, 서버로 전송되지 않습니다.
 
