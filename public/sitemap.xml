@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://toolry.kr/Toolry</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://toolry.kr/Toolry/regex</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/json</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/color</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/timestamp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/url</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/base64</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/hash</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/lorem</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/case</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/column</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/diff</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/counter</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/number</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolry.kr/Toolry/jsbin</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import CopyButton from "@/components/CopyButton";
 
@@ -57,10 +57,42 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   ];
 }
 
+function parseColorString(input: string): { type: "hex" | "rgb" | "hsl"; values: number[] } | null {
+  const s = input.trim();
+
+  // HEX: #fff, #ffffff, fff, ffffff
+  const hexMatch = s.match(/^#?([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (hexMatch) {
+    let hex = hexMatch[1];
+    if (hex.length === 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    return { type: "hex", values: [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)] };
+  }
+
+  // rgb(r, g, b) or r, g, b or r g b
+  const rgbMatch = s.match(/^rgba?\s*\(\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*(?:[,/]\s*[\d.]+%?\s*)?\)$/i)
+    || s.match(/^(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})$/);
+  if (rgbMatch) {
+    const [, r, g, b] = rgbMatch;
+    const vals = [parseInt(r), parseInt(g), parseInt(b)];
+    if (vals.every((v) => v >= 0 && v <= 255)) return { type: "rgb", values: vals };
+  }
+
+  // hsl(h, s%, l%) or hsl(h s% l%)
+  const hslMatch = s.match(/^hsla?\s*\(\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})%?\s*[,\s]\s*(\d{1,3})%?\s*(?:[,/]\s*[\d.]+%?\s*)?\)$/i);
+  if (hslMatch) {
+    const [, h, sat, l] = hslMatch;
+    return { type: "hsl", values: [parseInt(h), parseInt(sat), parseInt(l)] };
+  }
+
+  return null;
+}
+
 const defaultColor: ColorState = { hex: "#6ee7b7", r: 110, g: 231, b: 183, h: 156, s: 72, l: 67 };
 
 export default function ColorPage() {
   const [color, setColor] = useState<ColorState>(defaultColor);
+  const [pasteInput, setPasteInput] = useState("");
+  const [pasteError, setPasteError] = useState("");
 
   const updateFromHex = useCallback((hex: string) => {
     const rgb = hexToRgb(hex);
@@ -82,6 +114,22 @@ export default function ColorPage() {
     setColor({ hex, r, g, b, h, s, l });
   }, []);
 
+  const handlePaste = useCallback((value: string) => {
+    setPasteInput(value);
+    setPasteError("");
+    if (!value.trim()) return;
+    const parsed = parseColorString(value);
+    if (!parsed) {
+      setPasteError("인식할 수 없는 색상 형식입니다.");
+      return;
+    }
+    if (parsed.type === "hex" || parsed.type === "rgb") {
+      updateFromRgb(parsed.values[0], parsed.values[1], parsed.values[2]);
+    } else {
+      updateFromHsl(parsed.values[0], parsed.values[1], parsed.values[2]);
+    }
+  }, [updateFromRgb, updateFromHsl]);
+
   const hexStr = color.hex.toUpperCase();
   const rgbStr = `rgb(${color.r}, ${color.g}, ${color.b})`;
   const hslStr = `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
@@ -101,6 +149,17 @@ export default function ColorPage() {
             onChange={(e) => updateFromHex(e.target.value)}
             className="w-full h-12 rounded-lg cursor-pointer bg-transparent border border-gray-700"
           />
+          <div>
+            <label className="text-sm text-gray-400 mb-1 block">색상 붙여넣기</label>
+            <input
+              type="text"
+              value={pasteInput}
+              onChange={(e) => handlePaste(e.target.value)}
+              placeholder="#ff5733, rgb(255,87,51), hsl(11,100%,60%)"
+              className={`w-full text-xs ${pasteError ? "!border-red-500" : ""}`}
+            />
+            {pasteError && <p className="text-red-400 text-xs mt-1">{pasteError}</p>}
+          </div>
         </div>
 
         {/* Inputs */}

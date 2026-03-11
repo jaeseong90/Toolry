@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull:*)",
+      "Bash(npm run:*)",
+      "Bash(cd C:/workspace/myProject/Toolry && npm install)",
+      "WebFetch(domain:localhost)",
+      "Bash(echo \"=== Homepage ===\" && curl -s http://localhost:3000/Toolry | grep -oP '<title>[^<]+' | head -1 && curl -s http://localhost:3000/Toolry | grep -c 'ToolCard\\\\|tool-card\\\\|href=\"/Toolry/' && echo \"=== SEO Check ===\" && curl -s http://localhost:3000/Toolry | grep -oP '\\(canonical|theme-color|twitter:|og:|ld\\\\+json|favicon|manifest\\)' | sort -u)",
+      "Bash(curl -s http://localhost:3000/Toolry/ | grep -o '<title>[^<]*</title>' && echo \"---\" && curl -s http://localhost:3000/Toolry/regex | grep -o '<title>[^<]*</title>' && echo \"---\" && curl -s http://localhost:3000/Toolry/diff | grep -o '<title>[^<]*</title>' && echo \"---\" && curl -s http://localhost:3000/Toolry/number | grep -o '<title>[^<]*</title>')",
+      "Bash(curl -s http://localhost:3000/Toolry/ | grep \"title\" | head -5)",
+      "Bash(curl -s http://localhost:3000/Toolry/ | head -30)"
+    ]
+  }
+}

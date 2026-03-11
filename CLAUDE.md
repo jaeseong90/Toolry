@@ -1,8 +1,10 @@
 # CLAUDE.md
 
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 ## 프로젝트 개요
 
-Toolry - 개발자용 온라인 유틸리티 도구 모음 사이트 (정적 사이트, 백엔드 없음)
+Toolry - 개발자용 온라인 유틸리티 도구 모음 사이트 (정적 사이트, 백엔드 없음). 모든 데이터 처리는 브라우저에서 수행되며 서버 전송 없음.
 
 ## 기술 스택
 
@@ -39,11 +41,23 @@ lib/
   tools.ts       # 도구 메타데이터 (이름, 설명, 경로, 아이콘)
 ```
 
+## 아키텍처
+
+- **도구 레지스트리**: `lib/tools.ts`의 `tools` 배열이 홈페이지 그리드와 `ToolLayout` 관련 도구 섹션을 구동
+- **도구 페이지 패턴**: 각 도구는 `app/<slug>/page.tsx` (클라이언트 컴포넌트, `"use client"` 필수)와 `app/<slug>/layout.tsx` (SEO metadata export)로 구성
+- **공통 래퍼**: `ToolLayout` 컴포넌트가 도구 제목, 설명, 하단 관련 도구 네비게이션을 자동 제공
+
+## 디자인 시스템 (Tailwind)
+
+- 다크 모드 전용 (`class` 전략, `<html lang="ko" className="dark">`)
+- 커스텀 색상: `bg` (#0f1117), `surface` (#1a1d27), `accent` (#6ee7b7)
+- 폰트: Syne (heading), DM Sans (body/sans), DM Mono (mono)
+
 ## 새 도구 추가 방법
 
-1. `lib/tools.ts`에 도구 메타데이터 추가
-2. `app/<tool-name>/page.tsx` 페이지 생성
-3. `ToolLayout` 컴포넌트로 감싸서 일관된 UI 유지
+1. `lib/tools.ts`에 도구 메타데이터 추가 (`slug`, `name`, `description`, `icon`)
+2. `app/<slug>/page.tsx` 생성 — `"use client"` 지시어 필수, `<ToolLayout slug="<slug>">` 으로 감쌈
+3. `app/<slug>/layout.tsx` 생성 — SEO용 `Metadata` export
 
 ## 주의사항
 
