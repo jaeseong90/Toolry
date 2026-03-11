@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "타임스탬프 변환기 | Toolry",
     description: "Unix 타임스탬프와 날짜/시간을 변환하세요.",
-    url: "https://toolry.kr/timestamp",
+    url: "https://jaeseong90.github.io/timestamp",
   },
   twitter: { card: "summary", title: "타임스탬프 변환기 | Toolry" },
   robots: { index: true, follow: true },

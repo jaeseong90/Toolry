@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "JSON 포맷터 | Toolry",
     description: "JSON 데이터를 보기 좋게 정렬하거나 압축하세요.",
-    url: "https://toolry.kr/json",
+    url: "https://jaeseong90.github.io/json",
   },
   twitter: { card: "summary", title: "JSON 포맷터 | Toolry" },
   robots: { index: true, follow: true },

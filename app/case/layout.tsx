@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "케이스 변환기 | Toolry",
     description: "camelCase, snake_case, PascalCase, kebab-case 등으로 변환하세요.",
-    url: "https://toolry.kr/case",
+    url: "https://jaeseong90.github.io/case",
   },
   twitter: { card: "summary", title: "케이스 변환기 | Toolry" },
   robots: { index: true, follow: true },

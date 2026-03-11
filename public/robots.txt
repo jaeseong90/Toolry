@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toolry.kr/Toolry/sitemap.xml
+Sitemap: https://jaeseong90.github.io/Toolry/sitemap.xml

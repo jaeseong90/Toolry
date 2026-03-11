@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "해시 생성기 | Toolry",
     description: "다양한 해시 알고리즘으로 텍스트 해시를 생성하세요.",
-    url: "https://toolry.kr/hash",
+    url: "https://jaeseong90.github.io/hash",
   },
   twitter: { card: "summary", title: "해시 생성기 | Toolry" },
   robots: { index: true, follow: true },

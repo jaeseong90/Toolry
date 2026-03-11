@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lorem Ipsum 생성기 | Toolry",
     description: "더미 텍스트를 원하는 분량만큼 생성하세요.",
-    url: "https://toolry.kr/lorem",
+    url: "https://jaeseong90.github.io/lorem",
   },
   twitter: { card: "summary", title: "Lorem Ipsum 생성기 | Toolry" },
   robots: { index: true, follow: true },

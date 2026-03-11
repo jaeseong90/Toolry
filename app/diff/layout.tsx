@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "텍스트 비교 (Diff) | Toolry",
     description: "두 텍스트의 차이점을 한눈에 비교하세요.",
-    url: "https://toolry.kr/Toolry/diff",
+    url: "https://jaeseong90.github.io/Toolry/diff",
   },
   twitter: { card: "summary", title: "텍스트 비교 | Toolry" },
   robots: { index: true, follow: true },

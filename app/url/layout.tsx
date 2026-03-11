@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "URL 인코더/디코더 | Toolry",
     description: "URL을 인코딩하거나 디코딩하세요.",
-    url: "https://toolry.kr/url",
+    url: "https://jaeseong90.github.io/url",
   },
   twitter: { card: "summary", title: "URL 인코더/디코더 | Toolry" },
   robots: { index: true, follow: true },

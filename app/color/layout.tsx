@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "색상 변환기 | Toolry",
     description: "HEX, RGB, HSL 색상 포맷을 자유롭게 변환하세요.",
-    url: "https://toolry.kr/color",
+    url: "https://jaeseong90.github.io/color",
   },
   twitter: { card: "summary", title: "색상 변환기 | Toolry" },
   robots: { index: true, follow: true },

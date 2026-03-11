@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HTML 엔티티 변환기 | Toolry",
     description: "HTML 특수문자와 엔티티를 자유롭게 변환하세요.",
-    url: "https://toolry.kr/Toolry/html5",
+    url: "https://jaeseong90.github.io/Toolry/html5",
   },
   twitter: { card: "summary", title: "HTML 엔티티 변환기 | Toolry" },
   robots: { index: true, follow: true },

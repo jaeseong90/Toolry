@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "JS 플레이그라운드 | Toolry",
     description: "HTML, CSS, JavaScript를 바로 작성하고 실행 결과를 확인하세요.",
-    url: "https://toolry.kr/Toolry/jsbin",
+    url: "https://jaeseong90.github.io/Toolry/jsbin",
   },
   twitter: { card: "summary", title: "JS 플레이그라운드 | Toolry" },
   robots: { index: true, follow: true },

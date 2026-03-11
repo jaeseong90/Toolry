@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "글자수 카운터 | Toolry",
     description: "글자수, 단어수, 바이트수를 실시간으로 확인하세요.",
-    url: "https://toolry.kr/Toolry/counter",
+    url: "https://jaeseong90.github.io/Toolry/counter",
   },
   twitter: { card: "summary", title: "글자수 카운터 | Toolry" },
   robots: { index: true, follow: true },

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "정규식 테스터 | Toolry",
     description: "정규표현식을 실시간으로 테스트하고 매칭 결과를 확인하세요.",
-    url: "https://toolry.kr/regex",
+    url: "https://jaeseong90.github.io/regex",
   },
   twitter: { card: "summary", title: "정규식 테스터 | Toolry" },
   robots: { index: true, follow: true },

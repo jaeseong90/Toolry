@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "컬럼명 변환기 | Toolry",
     description: "한글 → 영문 컬럼명/변수명 변환기",
-    url: "https://toolry.kr/column",
+    url: "https://jaeseong90.github.io/column",
   },
   twitter: { card: "summary", title: "컬럼명 변환기 | Toolry" },
   robots: { index: true, follow: true },
