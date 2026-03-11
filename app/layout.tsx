@@ -78,12 +78,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
-        {/* GoatCounter - 방문자 분석 (https://www.goatcounter.com) */}
-        <script
-          data-goatcounter="https://toolry.goatcounter.com/count"
-          async
-          src="//gc.zgo.at/count.js"
-        />
       </body>
     </html>
   );

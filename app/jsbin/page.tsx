@@ -37,8 +37,6 @@ const DEFAULT_JS = `function sayHello() {
 console.log('JS 플레이그라운드에 오신 것을 환영합니다!');
 console.log('자유롭게 코드를 수정하고 실행해보세요.');`;
 
-type Tab = "html" | "css" | "js";
-
 interface ConsoleLine {
   type: "log" | "error" | "warn" | "info";
   args: string;
@@ -48,7 +46,6 @@ export default function JSBinPage() {
   const [html, setHtml] = useState(DEFAULT_HTML);
   const [css, setCss] = useState(DEFAULT_CSS);
   const [js, setJs] = useState(DEFAULT_JS);
-  const [activeTab, setActiveTab] = useState<Tab>("html");
   const [consoleLines, setConsoleLines] = useState<ConsoleLine[]>([]);
   const [autoRun, setAutoRun] = useState(true);
   const [showConsole, setShowConsole] = useState(true);
@@ -121,15 +118,6 @@ ${js}
     return () => clearTimeout(timerRef.current);
   }, [html, css, js, autoRun, run]);
 
-  const tabs: { key: Tab; label: string }[] = [
-    { key: "html", label: "HTML" },
-    { key: "css", label: "CSS" },
-    { key: "js", label: "JavaScript" },
-  ];
-
-  const currentValue = activeTab === "html" ? html : activeTab === "css" ? css : js;
-  const currentSetter = activeTab === "html" ? setHtml : activeTab === "css" ? setCss : setJs;
-
   const consoleColorMap: Record<string, string> = {
     log: "text-body",
     error: "text-red-400",
@@ -137,25 +125,26 @@ ${js}
     info: "text-blue-400",
   };
 
+  const editorCommon = "w-full font-mono text-sm bg-surface border border-line rounded-lg px-3 py-2 text-heading focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors leading-6";
+
+  const handleTab = (e: React.KeyboardEvent<HTMLTextAreaElement>, setter: (v: string) => void) => {
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const target = e.target as HTMLTextAreaElement;
+      const start = target.selectionStart;
+      const end = target.selectionEnd;
+      const value = target.value;
+      setter(value.substring(0, start) + "  " + value.substring(end));
+      requestAnimationFrame(() => {
+        target.selectionStart = target.selectionEnd = start + 2;
+      });
+    }
+  };
+
   return (
     <ToolLayout slug="jsbin">
       <div className="space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  activeTab === tab.key
-                    ? "bg-accent text-bg"
-                    : "bg-surface text-muted hover:text-heading border border-line"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
           <div className="flex items-center gap-3">
             <label className="flex items-center gap-2 text-sm text-muted cursor-pointer">
               <input type="checkbox" checked={autoRun} onChange={(e) => setAutoRun(e.target.checked)} className="accent-accent" />
@@ -166,50 +155,67 @@ ${js}
                 ▶ 실행
               </button>
             )}
-            <button
-              onClick={() => setShowConsole(!showConsole)}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors border ${
-                showConsole ? "bg-surface text-accent border-accent/50" : "bg-surface text-muted border-line hover:text-heading"
-              }`}
-            >
-              콘솔 {consoleLines.length > 0 && `(${consoleLines.length})`}
-            </button>
           </div>
+          <button
+            onClick={() => setShowConsole(!showConsole)}
+            className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors border ${
+              showConsole ? "bg-surface text-accent border-accent/50" : "bg-surface text-muted border-line hover:text-heading"
+            }`}
+          >
+            콘솔 {consoleLines.length > 0 && `(${consoleLines.length})`}
+          </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          <div>
-            <textarea
-              value={currentValue}
-              onChange={(e) => currentSetter(e.target.value)}
-              spellCheck={false}
-              className="w-full font-mono text-sm bg-surface border border-line rounded-lg px-4 py-3 text-heading focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors leading-6"
-              rows={20}
-              style={{ tabSize: 2, resize: "vertical" }}
-              onKeyDown={(e) => {
-                if (e.key === "Tab") {
-                  e.preventDefault();
-                  const target = e.target as HTMLTextAreaElement;
-                  const start = target.selectionStart;
-                  const end = target.selectionEnd;
-                  const value = target.value;
-                  currentSetter(value.substring(0, start) + "  " + value.substring(end));
-                  requestAnimationFrame(() => {
-                    target.selectionStart = target.selectionEnd = start + 2;
-                  });
-                }
-              }}
-            />
+          {/* Left: All 3 editors stacked */}
+          <div className="space-y-2">
+            <div>
+              <label className="text-xs font-medium text-accent mb-1 block">HTML</label>
+              <textarea
+                value={html}
+                onChange={(e) => setHtml(e.target.value)}
+                spellCheck={false}
+                className={editorCommon}
+                rows={7}
+                style={{ tabSize: 2, resize: "vertical" }}
+                onKeyDown={(e) => handleTab(e, setHtml)}
+              />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-accent mb-1 block">CSS</label>
+              <textarea
+                value={css}
+                onChange={(e) => setCss(e.target.value)}
+                spellCheck={false}
+                className={editorCommon}
+                rows={7}
+                style={{ tabSize: 2, resize: "vertical" }}
+                onKeyDown={(e) => handleTab(e, setCss)}
+              />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-accent mb-1 block">JavaScript</label>
+              <textarea
+                value={js}
+                onChange={(e) => setJs(e.target.value)}
+                spellCheck={false}
+                className={editorCommon}
+                rows={7}
+                style={{ tabSize: 2, resize: "vertical" }}
+                onKeyDown={(e) => handleTab(e, setJs)}
+              />
+            </div>
           </div>
 
+          {/* Right: Preview + Console */}
           <div className="space-y-3">
-            <div className="bg-white rounded-lg overflow-hidden border border-line" style={{ minHeight: showConsole ? "240px" : "460px" }}>
+            <div className="bg-white rounded-lg overflow-hidden border border-line" style={{ minHeight: showConsole ? "340px" : "500px" }}>
               <iframe
                 ref={iframeRef}
                 title="preview"
                 sandbox="allow-scripts allow-modals"
                 className="w-full h-full border-0"
-                style={{ minHeight: showConsole ? "240px" : "460px" }}
+                style={{ minHeight: showConsole ? "340px" : "500px" }}
               />
             </div>
 
