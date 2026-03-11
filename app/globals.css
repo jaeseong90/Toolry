@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-gray-100 font-sans;
+}
+
+::selection {
+  @apply bg-accent/30 text-white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+textarea,
+input[type="text"],
+input[type="number"] {
+  @apply bg-surface border border-gray-700 rounded-lg px-3 py-2 text-gray-100 font-mono text-sm
+    focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors;
+}
+
+textarea {
+  resize: vertical;
+}
