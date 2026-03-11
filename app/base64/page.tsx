@@ -33,7 +33,7 @@ export default function Base64Page() {
               key={m}
               onClick={() => { setMode(m); setInput(""); setError(""); }}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                mode === m ? "bg-accent text-bg" : "bg-surface text-gray-400 hover:text-white border border-gray-700"
+                mode === m ? "bg-accent text-bg" : "bg-surface text-muted hover:text-heading border border-line"
               }`}
             >
               {m === "encode" ? "Encode" : "Decode"}
@@ -44,7 +44,7 @@ export default function Base64Page() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">
+              <label className="text-sm text-muted">
                 {mode === "encode" ? "텍스트" : "Base64"}
               </label>
             </div>
@@ -58,7 +58,7 @@ export default function Base64Page() {
           </div>
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">
+              <label className="text-sm text-muted">
                 {mode === "encode" ? "Base64" : "텍스트"}
               </label>
               <CopyButton text={output} />

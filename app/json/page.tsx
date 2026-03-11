@@ -19,7 +19,6 @@ export default function JsonPage() {
       return { output, error: null };
     } catch (e) {
       const msg = (e as Error).message;
-      // Try to extract position info
       const posMatch = msg.match(/position (\d+)/);
       let line: number | null = null;
       if (posMatch) {
@@ -36,13 +35,13 @@ export default function JsonPage() {
   return (
     <ToolLayout slug="json">
       <div className="flex items-center gap-2 mb-4">
-        <div className="flex bg-surface border border-gray-700 rounded-lg overflow-hidden">
+        <div className="flex bg-surface border border-line rounded-lg overflow-hidden">
           {(["beautify", "minify"] as const).map((m) => (
             <button
               key={m}
               onClick={() => setMode(m)}
               className={`px-4 py-1.5 text-sm font-medium transition-colors ${
-                mode === m ? "bg-accent/20 text-accent" : "text-gray-400 hover:text-white"
+                mode === m ? "bg-accent/20 text-accent" : "text-muted hover:text-heading"
               }`}
             >
               {m === "beautify" ? "Beautify" : "Minify"}
@@ -50,14 +49,14 @@ export default function JsonPage() {
           ))}
         </div>
         {mode === "beautify" && (
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+          <div className="flex items-center gap-2 text-sm text-muted">
             <span>들여쓰기:</span>
             {[2, 4].map((n) => (
               <button
                 key={n}
                 onClick={() => setIndent(n)}
                 className={`px-2.5 py-1 rounded-md transition-colors ${
-                  indent === n ? "bg-accent/20 text-accent" : "bg-surface border border-gray-700 text-gray-400 hover:text-white"
+                  indent === n ? "bg-accent/20 text-accent" : "bg-surface border border-line text-muted hover:text-heading"
                 }`}
               >
                 {n}칸
@@ -69,7 +68,7 @@ export default function JsonPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">입력 JSON</label>
+          <label className="block text-sm text-muted mb-1">입력 JSON</label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -84,7 +83,7 @@ export default function JsonPage() {
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="text-sm text-gray-400">결과</label>
+            <label className="text-sm text-muted">결과</label>
             <CopyButton text={result.output} />
           </div>
           <textarea

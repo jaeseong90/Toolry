@@ -17,7 +17,6 @@ export default function CopyButton({ text, label = "복사", className = "" }: C
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      // fallback
       const ta = document.createElement("textarea");
       ta.value = text;
       document.body.appendChild(ta);
@@ -35,7 +34,7 @@ export default function CopyButton({ text, label = "복사", className = "" }: C
       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
         copied
           ? "bg-accent/20 text-accent"
-          : "bg-surface border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500"
+          : "bg-surface border border-line text-muted hover:text-heading hover:border-muted"
       } ${className}`}
     >
       {copied ? (

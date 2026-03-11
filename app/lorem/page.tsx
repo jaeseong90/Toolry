@@ -56,7 +56,6 @@ export default function LoremPage() {
     if (unit === "sentences") {
       return Array.from({ length: count }, (_, i) => generateSentence(i * 7 + 1)).join(" ");
     }
-    // words
     const words: string[] = [];
     let s = 42;
     for (let i = 0; i < count; i++) {
@@ -72,7 +71,7 @@ export default function LoremPage() {
       <div className="max-w-4xl mx-auto space-y-4">
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-400">수량</label>
+            <label className="text-sm text-muted">수량</label>
             <input
               type="number"
               min={1}
@@ -88,7 +87,7 @@ export default function LoremPage() {
                 key={u}
                 onClick={() => setUnit(u)}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  unit === u ? "bg-accent text-bg" : "bg-surface text-gray-400 hover:text-white border border-gray-700"
+                  unit === u ? "bg-accent text-bg" : "bg-surface text-muted hover:text-heading border border-line"
                 }`}
               >
                 {u === "paragraphs" ? "문단" : u === "sentences" ? "문장" : "단어"}
@@ -99,7 +98,7 @@ export default function LoremPage() {
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="text-sm text-gray-400">결과</label>
+            <label className="text-sm text-muted">결과</label>
             <CopyButton text={output} />
           </div>
           <textarea rows={15} value={output} readOnly className="w-full" />

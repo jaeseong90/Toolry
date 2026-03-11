@@ -20,13 +20,13 @@ export default function UrlPage() {
   return (
     <ToolLayout slug="url">
       <div className="max-w-3xl space-y-4">
-        <div className="flex bg-surface border border-gray-700 rounded-lg overflow-hidden w-fit">
+        <div className="flex bg-surface border border-line rounded-lg overflow-hidden w-fit">
           {(["encode", "decode"] as const).map((m) => (
             <button
               key={m}
               onClick={() => { setMode(m); setInput(""); }}
               className={`px-5 py-2 text-sm font-medium transition-colors ${
-                mode === m ? "bg-accent/20 text-accent" : "text-gray-400 hover:text-white"
+                mode === m ? "bg-accent/20 text-accent" : "text-muted hover:text-heading"
               }`}
             >
               {m === "encode" ? "인코더" : "디코더"}
@@ -35,7 +35,7 @@ export default function UrlPage() {
         </div>
 
         <div>
-          <label className="block text-sm text-gray-400 mb-1">
+          <label className="block text-sm text-muted mb-1">
             {mode === "encode" ? "인코딩할 텍스트" : "디코딩할 URL"}
           </label>
           <textarea
@@ -49,16 +49,10 @@ export default function UrlPage() {
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="text-sm text-gray-400">결과</label>
+            <label className="text-sm text-muted">결과</label>
             <CopyButton text={output} />
           </div>
-          <textarea
-            value={output}
-            readOnly
-            rows={6}
-            placeholder="변환 결과가 여기에 표시됩니다"
-            className="w-full text-accent/90"
-          />
+          <textarea value={output} readOnly rows={6} placeholder="변환 결과가 여기에 표시됩니다" className="w-full text-accent/90" />
         </div>
       </div>
     </ToolLayout>

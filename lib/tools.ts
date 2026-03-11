@@ -49,6 +49,12 @@ export const tools: Tool[] = [
     icon: "#",
   },
   {
+    slug: "html5",
+    name: "HTML 엔티티 변환기",
+    description: "HTML 특수문자와 엔티티를 인코딩/디코딩하세요",
+    icon: "<>",
+  },
+  {
     slug: "lorem",
     name: "Lorem Ipsum 생성기",
     description: "더미 텍스트를 원하는 분량만큼 생성하세요",

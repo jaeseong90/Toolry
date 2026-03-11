@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import CopyButton from "@/components/CopyButton";
 
@@ -59,16 +59,12 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
 
 function parseColorString(input: string): { type: "hex" | "rgb" | "hsl"; values: number[] } | null {
   const s = input.trim();
-
-  // HEX: #fff, #ffffff, fff, ffffff
   const hexMatch = s.match(/^#?([0-9a-f]{3}|[0-9a-f]{6})$/i);
   if (hexMatch) {
     let hex = hexMatch[1];
     if (hex.length === 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
     return { type: "hex", values: [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)] };
   }
-
-  // rgb(r, g, b) or r, g, b or r g b
   const rgbMatch = s.match(/^rgba?\s*\(\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*(?:[,/]\s*[\d.]+%?\s*)?\)$/i)
     || s.match(/^(\d{1,3})\s*[,\s]\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})$/);
   if (rgbMatch) {
@@ -76,14 +72,11 @@ function parseColorString(input: string): { type: "hex" | "rgb" | "hsl"; values:
     const vals = [parseInt(r), parseInt(g), parseInt(b)];
     if (vals.every((v) => v >= 0 && v <= 255)) return { type: "rgb", values: vals };
   }
-
-  // hsl(h, s%, l%) or hsl(h s% l%)
   const hslMatch = s.match(/^hsla?\s*\(\s*(\d{1,3})\s*[,\s]\s*(\d{1,3})%?\s*[,\s]\s*(\d{1,3})%?\s*(?:[,/]\s*[\d.]+%?\s*)?\)$/i);
   if (hslMatch) {
     const [, h, sat, l] = hslMatch;
     return { type: "hsl", values: [parseInt(h), parseInt(sat), parseInt(l)] };
   }
-
   return null;
 }
 
@@ -137,20 +130,19 @@ export default function ColorPage() {
   return (
     <ToolLayout slug="color">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Preview */}
         <div className="lg:col-span-1 space-y-4">
           <div
-            className="w-full aspect-square rounded-xl border border-gray-700 shadow-inner"
+            className="w-full aspect-square rounded-xl border border-line shadow-inner"
             style={{ backgroundColor: color.hex }}
           />
           <input
             type="color"
             value={color.hex}
             onChange={(e) => updateFromHex(e.target.value)}
-            className="w-full h-12 rounded-lg cursor-pointer bg-transparent border border-gray-700"
+            className="w-full h-12 rounded-lg cursor-pointer bg-transparent border border-line"
           />
           <div>
-            <label className="text-sm text-gray-400 mb-1 block">색상 붙여넣기</label>
+            <label className="text-sm text-muted mb-1 block">색상 붙여넣기</label>
             <input
               type="text"
               value={pasteInput}
@@ -162,33 +154,24 @@ export default function ColorPage() {
           </div>
         </div>
 
-        {/* Inputs */}
         <div className="lg:col-span-2 space-y-5">
-          {/* HEX */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">HEX</label>
+              <label className="text-sm text-muted">HEX</label>
               <CopyButton text={hexStr} />
             </div>
-            <input
-              type="text"
-              value={color.hex}
-              onChange={(e) => updateFromHex(e.target.value)}
-              className="w-full"
-              placeholder="#000000"
-            />
+            <input type="text" value={color.hex} onChange={(e) => updateFromHex(e.target.value)} className="w-full" placeholder="#000000" />
           </div>
 
-          {/* RGB */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">RGB</label>
+              <label className="text-sm text-muted">RGB</label>
               <CopyButton text={rgbStr} />
             </div>
             <div className="grid grid-cols-3 gap-2">
               {(["r", "g", "b"] as const).map((ch) => (
                 <div key={ch} className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-500 uppercase">{ch}</span>
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-faint uppercase">{ch}</span>
                   <input
                     type="number"
                     min={0}
@@ -196,11 +179,7 @@ export default function ColorPage() {
                     value={color[ch]}
                     onChange={(e) => {
                       const val = parseInt(e.target.value) || 0;
-                      updateFromRgb(
-                        ch === "r" ? val : color.r,
-                        ch === "g" ? val : color.g,
-                        ch === "b" ? val : color.b
-                      );
+                      updateFromRgb(ch === "r" ? val : color.r, ch === "g" ? val : color.g, ch === "b" ? val : color.b);
                     }}
                     className="w-full pl-8"
                   />
@@ -209,10 +188,9 @@ export default function ColorPage() {
             </div>
           </div>
 
-          {/* HSL */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-sm text-gray-400">HSL</label>
+              <label className="text-sm text-muted">HSL</label>
               <CopyButton text={hslStr} />
             </div>
             <div className="grid grid-cols-3 gap-2">
@@ -222,7 +200,7 @@ export default function ColorPage() {
                 { key: "l" as const, label: "L", max: 100 },
               ]).map(({ key, label, max }) => (
                 <div key={key} className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">{label}</span>
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-faint">{label}</span>
                   <input
                     type="number"
                     min={0}
@@ -230,11 +208,7 @@ export default function ColorPage() {
                     value={color[key]}
                     onChange={(e) => {
                       const val = parseInt(e.target.value) || 0;
-                      updateFromHsl(
-                        key === "h" ? val : color.h,
-                        key === "s" ? val : color.s,
-                        key === "l" ? val : color.l
-                      );
+                      updateFromHsl(key === "h" ? val : color.h, key === "s" ? val : color.s, key === "l" ? val : color.l);
                     }}
                     className="w-full pl-8"
                   />

@@ -2,19 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Theme Colors (CSS Variables) ===== */
+:root {
+  --c-bg: 249 250 251;
+  --c-surface: 255 255 255;
+  --c-accent: 16 185 129;
+  --c-heading: 17 24 39;
+  --c-body: 55 65 81;
+  --c-muted: 107 114 128;
+  --c-faint: 156 163 175;
+  --c-dim: 209 213 219;
+  --c-line: 209 213 219;
+  --c-line-dim: 229 231 235;
+}
+
+.dark {
+  --c-bg: 15 17 23;
+  --c-surface: 26 29 39;
+  --c-accent: 110 231 183;
+  --c-heading: 255 255 255;
+  --c-body: 209 213 219;
+  --c-muted: 156 163 175;
+  --c-faint: 107 114 128;
+  --c-dim: 75 85 99;
+  --c-line: 55 65 81;
+  --c-line-dim: 31 41 55;
+}
+
+/* ===== Base Styles ===== */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-bg text-gray-100 font-sans;
+  @apply bg-bg text-body font-sans transition-colors duration-200;
 }
 
 ::selection {
-  @apply bg-accent/30 text-white;
+  @apply bg-accent/30 text-heading;
 }
 
-/* Scrollbar styling */
+/* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -25,17 +53,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-surface rounded-full;
+  @apply bg-line rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
+  @apply bg-muted;
 }
 
+/* ===== Form Elements ===== */
 textarea,
 input[type="text"],
 input[type="number"] {
-  @apply bg-surface border border-gray-700 rounded-lg px-3 py-2 text-gray-100 font-mono text-sm
+  @apply bg-surface border border-line rounded-lg px-3 py-2 text-heading font-mono text-sm
     focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors;
 }
 

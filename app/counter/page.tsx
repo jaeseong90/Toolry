@@ -17,14 +17,9 @@ export default function CounterPage() {
     const lines = text ? text.split("\n").length : 0;
     const paragraphs = text.trim() ? text.trim().split(/\n\s*\n/).filter(Boolean).length : 0;
     const bytes = countBytes(text);
-
-    // 한글 글자수 (자모 제외, 완성형만)
     const korean = (text.match(/[\uAC00-\uD7A3]/g) || []).length;
-    // 영문 단어
     const english = (text.match(/[a-zA-Z]+/g) || []).length;
-    // 숫자
     const numbers = (text.match(/\d+/g) || []).length;
-
     return { chars, charsNoSpace, words, lines, paragraphs, bytes, korean, english, numbers };
   }, [text]);
 
@@ -44,21 +39,14 @@ export default function CounterPage() {
     <ToolLayout slug="counter">
       <div className="max-w-4xl mx-auto space-y-4">
         <div>
-          <label className="text-sm text-gray-400 mb-1 block">텍스트 입력</label>
-          <textarea
-            rows={10}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="글자수를 세고 싶은 텍스트를 입력하세요..."
-            className="w-full"
-          />
+          <label className="text-sm text-muted mb-1 block">텍스트 입력</label>
+          <textarea rows={10} value={text} onChange={(e) => setText(e.target.value)} placeholder="글자수를 세고 싶은 텍스트를 입력하세요..." className="w-full" />
         </div>
-
         <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-9 gap-3">
           {statCards.map((card) => (
-            <div key={card.label} className="bg-surface border border-gray-700 rounded-lg p-3 text-center">
+            <div key={card.label} className="bg-surface border border-line rounded-lg p-3 text-center">
               <div className="text-lg font-mono font-bold text-accent">{card.value}</div>
-              <div className="text-[11px] text-gray-500 mt-1">{card.label}</div>
+              <div className="text-[11px] text-faint mt-1">{card.label}</div>
             </div>
           ))}
         </div>

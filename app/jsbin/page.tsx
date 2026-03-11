@@ -104,7 +104,6 @@ ${js}
     iframe.srcdoc = doc;
   }, [html, css, js]);
 
-  // Listen for console messages from iframe
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (e.data?.source === "toolry-jsbin") {
@@ -115,7 +114,6 @@ ${js}
     return () => window.removeEventListener("message", handler);
   }, []);
 
-  // Auto-run with debounce
   useEffect(() => {
     if (!autoRun) return;
     clearTimeout(timerRef.current);
@@ -133,7 +131,7 @@ ${js}
   const currentSetter = activeTab === "html" ? setHtml : activeTab === "css" ? setCss : setJs;
 
   const consoleColorMap: Record<string, string> = {
-    log: "text-gray-300",
+    log: "text-body",
     error: "text-red-400",
     warn: "text-yellow-400",
     info: "text-blue-400",
@@ -142,7 +140,6 @@ ${js}
   return (
     <ToolLayout slug="jsbin">
       <div className="space-y-3">
-        {/* Toolbar */}
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-1">
             {tabs.map((tab) => (
@@ -152,7 +149,7 @@ ${js}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeTab === tab.key
                     ? "bg-accent text-bg"
-                    : "bg-surface text-gray-400 hover:text-white border border-gray-700"
+                    : "bg-surface text-muted hover:text-heading border border-line"
                 }`}
               >
                 {tab.label}
@@ -160,29 +157,19 @@ ${js}
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <label className="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={autoRun}
-                onChange={(e) => setAutoRun(e.target.checked)}
-                className="accent-accent"
-              />
+            <label className="flex items-center gap-2 text-sm text-muted cursor-pointer">
+              <input type="checkbox" checked={autoRun} onChange={(e) => setAutoRun(e.target.checked)} className="accent-accent" />
               자동 실행
             </label>
             {!autoRun && (
-              <button
-                onClick={run}
-                className="px-4 py-2 bg-accent text-bg rounded-lg text-sm font-medium hover:opacity-85 transition-opacity"
-              >
+              <button onClick={run} className="px-4 py-2 bg-accent text-bg rounded-lg text-sm font-medium hover:opacity-85 transition-opacity">
                 ▶ 실행
               </button>
             )}
             <button
               onClick={() => setShowConsole(!showConsole)}
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors border ${
-                showConsole
-                  ? "bg-surface text-accent border-accent/50"
-                  : "bg-surface text-gray-400 border-gray-700 hover:text-white"
+                showConsole ? "bg-surface text-accent border-accent/50" : "bg-surface text-muted border-line hover:text-heading"
               }`}
             >
               콘솔 {consoleLines.length > 0 && `(${consoleLines.length})`}
@@ -190,19 +177,16 @@ ${js}
           </div>
         </div>
 
-        {/* Editor + Preview */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          {/* Editor */}
           <div>
             <textarea
               value={currentValue}
               onChange={(e) => currentSetter(e.target.value)}
               spellCheck={false}
-              className="w-full font-mono text-sm bg-surface border border-gray-700 rounded-lg px-4 py-3 text-gray-100 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors leading-6"
+              className="w-full font-mono text-sm bg-surface border border-line rounded-lg px-4 py-3 text-heading focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/50 transition-colors leading-6"
               rows={20}
               style={{ tabSize: 2, resize: "vertical" }}
               onKeyDown={(e) => {
-                // Tab 키 지원
                 if (e.key === "Tab") {
                   e.preventDefault();
                   const target = e.target as HTMLTextAreaElement;
@@ -218,9 +202,8 @@ ${js}
             />
           </div>
 
-          {/* Preview */}
           <div className="space-y-3">
-            <div className="bg-white rounded-lg overflow-hidden border border-gray-700" style={{ minHeight: showConsole ? "240px" : "460px" }}>
+            <div className="bg-white rounded-lg overflow-hidden border border-line" style={{ minHeight: showConsole ? "240px" : "460px" }}>
               <iframe
                 ref={iframeRef}
                 title="preview"
@@ -230,25 +213,21 @@ ${js}
               />
             </div>
 
-            {/* Console */}
             {showConsole && (
-              <div className="bg-surface border border-gray-700 rounded-lg overflow-hidden">
-                <div className="flex items-center justify-between px-3 py-1.5 border-b border-gray-700">
-                  <span className="text-xs text-gray-500 font-medium">Console</span>
-                  <button
-                    onClick={() => setConsoleLines([])}
-                    className="text-xs text-gray-600 hover:text-gray-400 transition-colors"
-                  >
+              <div className="bg-surface border border-line rounded-lg overflow-hidden">
+                <div className="flex items-center justify-between px-3 py-1.5 border-b border-line">
+                  <span className="text-xs text-faint font-medium">Console</span>
+                  <button onClick={() => setConsoleLines([])} className="text-xs text-dim hover:text-muted transition-colors">
                     지우기
                   </button>
                 </div>
                 <div className="max-h-48 overflow-y-auto px-3 py-2 font-mono text-xs space-y-0.5">
                   {consoleLines.length === 0 ? (
-                    <div className="text-gray-600">콘솔 출력이 여기에 표시됩니다.</div>
+                    <div className="text-dim">콘솔 출력이 여기에 표시됩니다.</div>
                   ) : (
                     consoleLines.map((line, i) => (
                       <div key={i} className={`${consoleColorMap[line.type]} break-all leading-5`}>
-                        <span className="text-gray-600 select-none mr-2">
+                        <span className="text-dim select-none mr-2">
                           {line.type === "error" ? "✕" : line.type === "warn" ? "⚠" : "›"}
                         </span>
                         {line.args}
