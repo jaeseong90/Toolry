@@ -55,15 +55,6 @@ npm run dev
 3. `app/<slug>/layout.tsx`에 SEO metadata를 설정합니다.
 4. `ToolLayout` 컴포넌트로 감싸면 공통 레이아웃이 자동 적용됩니다.
 
-## 패밀리 사이트
-
-| 사이트 | 링크 | 설명 |
-|--------|------|------|
-| 블로그 | [jaeseong90.github.io](https://jaeseong90.github.io) | 개발 블로그 |
-| 포트폴리오 | [jaeseong90Folio](https://jaeseong90.github.io/jaeseong90Folio/) | 포트폴리오 사이트 |
-| 게임 | [homepage-game](https://jaeseong90.github.io/homepage-game/) | 미니 게임 사이트 |
-| Toolry | [Toolry](https://jaeseong90.github.io/Toolry) | 개발자 유틸리티 도구 모음 |
-
 ## 라이선스
 
 MIT
