@@ -59,6 +59,12 @@ lib/
 2. `app/<slug>/page.tsx` 생성 — `"use client"` 지시어 필수, `<ToolLayout slug="<slug>">` 으로 감쌈
 3. `app/<slug>/layout.tsx` 생성 — SEO용 `Metadata` export
 
+## Git 브랜치 규칙
+
+- **반드시 `main` 브랜치에서만 작업**한다. 별도 feature 브랜치를 만들지 않는다.
+- 커밋 후 `main` 브랜치에 직접 push한다.
+- 브랜치를 새로 만들거나 PR을 생성하지 않는다.
+
 ## 주의사항
 
 - `next.config.mjs`에 `basePath: "/Toolry"` 설정됨 (GitHub Pages 배포용)
