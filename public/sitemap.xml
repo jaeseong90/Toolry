@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://jaeseong90.github.io/Toolry</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/regex</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/json</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/color</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/timestamp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/url</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/base64</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/hash</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/html5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/lorem</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/case</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/column</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/diff</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/counter</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/number</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jaeseong90.github.io/Toolry/jsbin</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry</loc><lastmod>2026-03-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/regex</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/json</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/color</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/timestamp</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/url</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/base64</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/hash</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/html5</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/lorem</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/case</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/column</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/diff</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/counter</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/number</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jaeseong90.github.io/Toolry/jsbin</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

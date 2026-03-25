@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ToolStructuredData from "@/components/ToolStructuredData";
 
 export const metadata: Metadata = {
   title: "케이스 변환기",
@@ -7,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "케이스 변환기 | Toolry",
     description: "camelCase, snake_case, PascalCase, kebab-case 등으로 변환하세요.",
-    url: "https://jaeseong90.github.io/case",
+    url: "https://jaeseong90.github.io/Toolry/case",
   },
   twitter: { card: "summary", title: "케이스 변환기 | Toolry" },
   robots: { index: true, follow: true },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <>{children}<ToolStructuredData slug="case" /></>;
 }

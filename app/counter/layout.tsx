@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ToolStructuredData from "@/components/ToolStructuredData";
 
 export const metadata: Metadata = {
   title: "글자수 카운터",
@@ -14,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <>{children}<ToolStructuredData slug="counter" /></>;
 }

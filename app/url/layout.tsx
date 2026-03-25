@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ToolStructuredData from "@/components/ToolStructuredData";
 
 export const metadata: Metadata = {
   title: "URL 인코더/디코더",
@@ -7,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "URL 인코더/디코더 | Toolry",
     description: "URL을 인코딩하거나 디코딩하세요.",
-    url: "https://jaeseong90.github.io/url",
+    url: "https://jaeseong90.github.io/Toolry/url",
   },
   twitter: { card: "summary", title: "URL 인코더/디코더 | Toolry" },
   robots: { index: true, follow: true },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <>{children}<ToolStructuredData slug="url" /></>;
 }

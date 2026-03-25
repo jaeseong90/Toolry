@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
+import { tools } from "@/lib/tools";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -73,6 +74,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 target: "https://jaeseong90.github.io/Toolry?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              name: "개발자 도구 모음",
+              description: "Toolry에서 제공하는 무료 온라인 개발자 도구 목록",
+              numberOfItems: tools.length,
+              itemListElement: tools.map((tool, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: tool.name,
+                url: `https://jaeseong90.github.io/Toolry/${tool.slug}`,
+                description: tool.description,
+              })),
             }),
           }}
         />
