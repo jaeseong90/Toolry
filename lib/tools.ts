@@ -7,6 +7,12 @@ export interface Tool {
 
 export const tools: Tool[] = [
   {
+    slug: "jsbin",
+    name: "JS 플레이그라운드",
+    description: "HTML, CSS, JavaScript를 바로 작성하고 실행 결과를 확인하세요",
+    icon: "/>",
+  },
+  {
     slug: "regex",
     name: "정규식 테스터",
     description: "정규표현식을 실시간으로 테스트하고 매칭 결과를 확인하세요",
@@ -89,11 +95,5 @@ export const tools: Tool[] = [
     name: "숫자 포맷터",
     description: "천단위 콤마, 한글 금액 변환 등 숫자를 다양하게 포맷합니다",
     icon: "1,2",
-  },
-  {
-    slug: "jsbin",
-    name: "JS 플레이그라운드",
-    description: "HTML, CSS, JavaScript를 바로 작성하고 실행 결과를 확인하세요",
-    icon: "/>",
   },
 ];
